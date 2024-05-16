@@ -5,7 +5,7 @@
 #include <cstdlib>
 #include <algorithm>
 #include <chrono>
-#include <assert.h>
+#include <cassert>
 
 using namespace std;
 
