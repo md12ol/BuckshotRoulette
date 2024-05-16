@@ -134,6 +134,24 @@ int performAction(int action, vector<bool> magazine, vector<bool> spentAmmo, int
     }
 }
 
+///**
+// * Return the number of times val occurs in vec.
+// *
+// * @param vec   The vector.
+// * @param val   The value.
+// * @return      The number
+// */
+//int vecCount<class T1>(vector<T1> &vec, T1 val){
+//    return count(vec.begin(), vec.end(), val);
+//}
+
+string generatePrompt(vector<bool> magazine, vector<bool> spentAmmo, int compsEnergy, int usersEnergy,
+                  vector<string> compsItems, vector<string> usersItems){
+    string prompt;
+    int magNumBlanks = count(magazine.begin(), magazine.end(), false);
+    prompt = prompt + "The magazine contains " + stoi()
+}
+
 /**
  * Initializes and runs one round of buckshot roulette.
  *
