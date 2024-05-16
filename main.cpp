@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <algorithm>
 #include <chrono>
+#include <assert.h>
 
 using namespace std;
 
@@ -75,6 +76,65 @@ std::string getUserInput(const std::string &prompt, std::vector<std::string> acc
 }
 
 /**
+ * Determines which action the computer will take.
+ *
+ * @param magazine      Bullets in the magazine.
+ * @param spentAmmo     Bullets already spent.
+ * @param compsEnergy   Computer's energy.
+ * @param usersEnergy   User's energy.
+ * @param compsItems    Computer's items.
+ * @param usersItems    User's items.
+ * @return              The action decided on by the computer.
+ */
+int computersAction(vector<bool> magazine, vector<bool> spentAmmo, int compsEnergy, int usersEnergy,
+                    vector<string> compsItems, vector<string> usersItems) {
+    return 0;
+}
+
+/**
+ * Perform the action.
+ *
+ * @param action        The action to perform.
+ * @param magazine      Bullets in the magazine.
+ * @param spentAmmo     Bullets already spent.
+ * @param compsEnergy   Computer's energy.
+ * @param usersEnergy   User's energy.
+ * @param compsItems    Computer's items.
+ * @param usersItems    User's items.
+ * @return              0 if no error occurs.
+ */
+int performAction(int action, vector<bool> magazine, vector<bool> spentAmmo, int compsEnergy, int usersEnergy,
+                  vector<string> compsItems, vector<string> usersItems) {
+    switch (action) {
+        case 0: // Shoot the user
+            // Ensure there is a bullet to shoot and the user has enough energy
+            assert(!magazine.empty());
+            assert(usersEnergy > 0);
+            if (magazine[0]) { // Live bullet
+                usersEnergy--;
+            }
+            // Move bullet to spent ammo
+            magazine.erase(magazine.begin());
+            spentAmmo.push_back(true);
+            break;
+        case 1: // Shoot the computer
+            // Ensure there is a bullet to shoot and the computer has enough energy
+            assert(!magazine.empty());
+            assert(compsEnergy > 0);
+            if (magazine[0]) { // Live bullet
+                compsEnergy--;
+            }
+            // Move bullet to spent ammo
+            magazine.erase(magazine.begin());
+            spentAmmo.push_back(true);
+            break;
+        case 2: // Use item ...
+
+            break;
+    }
+}
+
+/**
  * Initializes and runs one round of buckshot roulette.
  *
  * @return 0 if no error occurs.
@@ -82,18 +142,20 @@ std::string getUserInput(const std::string &prompt, std::vector<std::string> acc
 int oneRound() {
     // Initialize the players' energy and items
     int usersEnergy = STARTING_ENERGY;
-    int compEnergy = STARTING_ENERGY;
+    int compsEnergy = STARTING_ENERGY;
     vector<string> usersItems;
-    vector<string> compItems;
+    vector<string> compsItems;
     usersItems.reserve(MAX_ITEMS);
-    usersItems.reserve(MAX_ITEMS);
+    compsItems.reserve(MAX_ITEMS);
 
     // Load the gun with bullets
     int numBullets = ((int) lrand48() % (MAX_BULLETS - 1)) + 2; // Number bullets in range [2, MAX_BULLETS]
     int numBlanks = (int) lrand48() % (numBullets - 1) + 1; // At least one live and one blank bullet
     int numLive = numBullets - numBlanks;
     vector<bool> magazine;
+    vector<bool> spentAmmo;
     magazine.reserve(MAX_BULLETS);
+    spentAmmo.reserve(MAX_BULLETS);
     for (int i = 0; i < numBlanks; ++i) {
         magazine.push_back(false);
     }
@@ -110,6 +172,7 @@ int oneRound() {
     printVector<ostream, bool>(cout, magazine, "Contents: ", ", ", true);
 
     cout << "Loading the gun with " << numLive << " live bullets and " << numBlanks << " blanks." << endl;
+
     return 0;
 }
 
