@@ -156,6 +156,8 @@ string generatePrompt(vector<bool> magazine, vector<bool> spentAmmo, int compsEn
  * Initializes and runs one round of buckshot roulette.
  *
  * @return 0 if no error occurs.
+ * @todo - one round is one clip - we need to get one turn set up
+ * @todo - move player into class
  */
 int oneRound() {
     // Initialize the players' energy and items
