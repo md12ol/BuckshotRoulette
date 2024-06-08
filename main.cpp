@@ -10,7 +10,7 @@
 using namespace std;
 
 // Constants for the program
-// Note for Nikola: this is the naming convention for constants, like Java
+// Note for Nikola: this is the naming convention for constants, like Java - global const
 const int MAX_ITEMS = 8;
 const int MAX_BULLETS = 8;
 const int STARTING_ENERGY = 4;
