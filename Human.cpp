@@ -6,7 +6,7 @@
  * @param vec   The vector we are searching for check.
  * @return      True if check is in vec.
  */
-bool strInVector(const string check, vector<string> &vec) {
+bool strInVector(const string& check, vector<string> vec) {
     return find(vec.begin(), vec.end(), check) != vec.end();
 }
 
@@ -23,14 +23,13 @@ string Human::getUserInput() {
  * @param acceptableInput   The vector of acceptable input values.
  * @return                  The user input.
  */
-std::string Human::getUserInput(const std::string &prompt, const std::vector<std::string>& acceptableInput) {
+std::string Human::getUserInput(const std::string &prompt, const vector<string>& acceptableInput) {
     std::string userInput;
     bool validInput = false;
     // Continually prompt the user for input until a value from acceptableInput is provided
     do {
         cout << prompt; // Prompt user
         getline(cin, userInput); // Get input
-        // TODO: For some reason strInVector(...) is not being found...might just be a bug.
         if (strInVector(userInput, acceptableInput)) { // If the user input is in acceptableInput
             validInput = true;
         }
