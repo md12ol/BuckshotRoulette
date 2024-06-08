@@ -4,8 +4,8 @@
  * Initializes and runs one round of buckshot roulette.
  *
  * @return 0 if no error occurs.
- * @todo - one round is one clip - we need to get one turn set up
- * @todo - move player into class
+ * @TODO: One round is one clip - we need to get one turn set up.
+ * @TODO: Move player into class.
  */
 // TODO: Might be useful?
 //int oneRound() {
